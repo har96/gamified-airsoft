@@ -1,0 +1,43 @@
+html {
+/*	background-color: #3A0; */
+	background: url("/static/images/background.JPG") no-repeat bottom center fixed; 
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	text-align: center;
+}
+#middle {
+	text-align: center;
+	width: 800px;
+	background-color: rgba(240,250,230,1);
+	margin: auto;
+	position: relative;
+	padding-bottom: 100px;
+}
+#header ul {
+	list-style: none;
+	position: absolute;
+	bottom: 20px;
+	right: 10px;
+}
+#header ul li {
+	display: inline;
+	padding-right: 25px;
+	font-size: 20px;
+	font-family: papyrus;
+	z-index: 100;
+}
+#header ul li a {
+	color: black;
+}
+#header {
+	width: 800px;
+	height: 200px;
+	background: url("/static/images/HeritageFarmsFresh.png");
+	background-size: 100% 100%;
+	position: relative;
+	top: -15px;
+	z-index: 0;
+}
+

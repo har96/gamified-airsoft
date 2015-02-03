@@ -1,0 +1,9 @@
+html {
+/*	background-color: #3A0; */
+	background: url("/static/images/background.JPG") no-repeat bottom center fixed; 
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	text-align: center;
+}

@@ -9,6 +9,8 @@ import os
 import time
 import json
 
+SUCCESS = {"success":True}
+
 class Handler( webapp.RequestHandler ):
 	jinja_environment = jinja2.Environment(loader=jinja2.FileSystemLoader(os.path.dirname(__file__)))
 	def render(self, temp, **format_args):
@@ -20,8 +22,43 @@ class Handler( webapp.RequestHandler ):
 		self.response.headers['Content-Type'] = 'application/json; charset=UTF-8'
 		self.response.out.write(json_s)
 
-class Home( Handler ):
-	def get(self):
-		self.render("templates/home.html")
+class AddUser( Handler ):
+
+    def post(self):
+       username = self.request.get("username")
+           
+       user = User(username=username)
+       user.put()
+
+       self.write_json(SUCCESS)
 
 
+class GetUser( Handler ):
+
+    def get(self, username):
+
+        user = User.get_by_username(username)
+
+        info = {"performance": user.performance,
+                "experience": user.experience,
+                "deaths":user.deaths,
+                "kills":user.kills}
+
+        self.write_json(info)
+
+
+class RegisterDeath( Handler ):
+
+    def post(self):
+        death = self.request.get("death")
+        kill = self.request.get("kill")
+
+        killer = User.get_by_username(kill)
+        killer.kills += 1
+        killer.put()
+
+        user = User.get_by_username(death)
+        user.deaths += 1
+        user.put()
+
+        self.write_json(SUCCESS)
